@@ -17,32 +17,50 @@
           <td align="center">
             <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="width:600px; max-width:100%; margin:0 auto; background:#ffffff;">
               <tr>
-                <td style="padding:0;">
-                  <a href="https://cdn.jsdelivr.net/gh/wharmbycal/cdn@main/2.jpg" target="_blank" style="text-decoration:none;">
+                <td style="padding:0; position:relative;">
+                  <div style="position:relative;">
                     <img src="https://cdn.jsdelivr.net/gh/wharmbycal/cdn@main/2.jpg" width="600" alt="Featured" border="0" style="display:block; width:100%; max-width:600px; height:auto; line-height:0; outline:none; text-decoration:none;">
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:24px 24px 12px 24px; font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; font-size:22px; line-height:1.3; color:#111827; font-weight:700;">
-                  Your Headline
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:0 24px 24px 24px; font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; font-size:16px; line-height:1.6; color:#374151;">
-                  Your message goes here. This template pulls the image directly via JSDelivr, so recipients will fetch it when they open the email.
-                </td>
-              </tr>
-              <tr>
-                <td align="center" style="padding:0 24px 32px 24px;">
-                  <a href="https://example.com" target="_blank" style="display:inline-block; background:#2563eb; color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; font-size:16px; line-height:1; text-decoration:none; padding:14px 22px; border-radius:6px;">
-                    Call to Action
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:0 24px 24px 24px; font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; font-size:12px; line-height:1.5; color:#6b7280;">
-                  If you cannot see the image, <a href="https://cdn.jsdelivr.net/gh/wharmbycal/cdn@main/2.jpg" target="_blank" style="color:#2563eb; text-decoration:underline;">view it in your browser</a>.
+                    
+                    <!-- Banner Overlay - positioned under the 5 stars -->
+                    <div style="position:absolute; top:94%; left:50%; transform:translate(-50%, -50%); text-align:center; width:100%; max-width:400px;">
+                      <div style="padding:10px; margin:0 20px;">
+                        <div style="padding:12px 20px; display:inline-block;">
+                          <a href="#" style="color:#ffffff; text-decoration:none; font-family:Arial, sans-serif; font-size:14px; margin:0 8px;">Website</a>
+                          <a href="#" style="color:#ffffff; text-decoration:none; font-family:Arial, sans-serif; font-size:14px; margin:0 8px;">Contact</a>
+                          <a href="#" style="color:#ffffff; text-decoration:none; font-family:Arial, sans-serif; font-size:14px; margin:0 8px;">Unsubscribe</a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Overlay Content on top of the image -->
+                    <div style="position:absolute; top:56%; left:50%; transform:translate(-50%, -50%); text-align:center; width:100%; max-width:400px;">
+                      <div style="padding:15px; margin:0 20px;">
+                        <div style="padding: 15px 30px; border-radius: 12px; background: linear-gradient(145deg, #1a2f4c, #0a1421); box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), inset 0 0 10px rgba(0, 200, 255, 0.3); display: inline-block;">
+                          <div id="countdown-display" style="font-size: 1.8em; font-weight: bold; color: #b3e0ff; text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff, 0 0 40px #00aaff; letter-spacing: 3px; font-family: 'Inter', sans-serif;">00:00:00</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Button Overlay -->
+                    <div style="position:absolute; top:77%; left:50%; transform:translate(-50%, -50%); text-align:center; width:100%; max-width:400px;">
+                      <div style="padding:25px; margin:0 20px;">
+                        <a href="https://your-link.com" 
+   style="display:inline-block;
+          padding:17px 34px;
+          border-radius:48px;
+          background: linear-gradient(90deg, #00c6ff, #ff00ff);
+          color:#ffffff;
+          font-size:19px;
+          font-weight:bold;
+          text-decoration:none;
+          text-align:center;
+          font-family:Arial, Helvetica, sans-serif;
+          box-shadow:0 0 14px rgba(255,0,255,0.7), 0 0 22px rgba(0,198,255,0.6);">
+   CLAIM MY FREE WEBSITE
+</a>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </table>
@@ -50,5 +68,57 @@
         </tr>
       </table>
     </center>
+    
+    <script>
+        // Function to update the countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            
+            // Set target date: Friday 15/08/25 at 00:00 (midnight) UK time
+            const targetDate = new Date('2025-08-15T00:00:00+01:00'); // UK timezone (BST)
+            
+            // Set start date: Friday 15/08/25 at 8:00 AM UK time
+            const startDate = new Date('2025-08-15T08:00:00+01:00'); // UK timezone (BST)
+            
+            // Check if we're before the start date
+            if (now < startDate) {
+                document.getElementById('countdown-display').textContent = 'Starting Soon';
+                return;
+            }
+            
+            const timeRemaining = targetDate.getTime() - now.getTime(); // Time difference in milliseconds
+
+            // Check if countdown has ended
+            if (timeRemaining <= 0) {
+                document.getElementById('countdown-display').textContent = 'Offer Expired';
+                return;
+            }
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            // Format numbers to always have two digits (e.g., 05 instead of 5)
+            const formattedDays = String(days).padStart(2, '0');
+            const formattedHours = String(hours).padStart(2, '0');
+            const formattedMinutes = String(minutes).padStart(2, '0');
+            const formattedSeconds = String(seconds).padStart(2, '0');
+
+            // Display the countdown with days if more than 24 hours
+            if (days > 0) {
+                document.getElementById('countdown-display').textContent = `${formattedDays}d ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+            } else {
+                document.getElementById('countdown-display').textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+            }
+        }
+
+        // Update the countdown immediately on page load
+        updateCountdown();
+
+        // Update the countdown every second
+        const timerInterval = setInterval(updateCountdown, 1000);
+    </script>
   </body>
 </html>
