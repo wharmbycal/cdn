@@ -8,9 +8,14 @@
     "test": "node send-email.js"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
     "node-fetch": "^2.6.7"
   },
-  "keywords": ["email", "postmark", "marketing"],
+  "keywords": [
+    "email",
+    "postmark",
+    "marketing"
+  ],
   "author": "",
   "license": "ISC"
 }

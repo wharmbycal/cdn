@@ -1,0 +1,5 @@
+Create a file named .env in this folder with the following content:
+
+POSTMARK_API_TOKEN=YOUR_POSTMARK_TOKEN
+FROM_EMAIL=admin@fence-net.com
+TO_EMAIL=admin@fence-net.com

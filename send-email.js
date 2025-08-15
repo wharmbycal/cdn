@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 // Read the email template
 let emailTemplate = fs.readFileSync(path.join(__dirname, 'email-marketing-template.html'), 'utf8');
@@ -36,10 +37,10 @@ function buildCountdownText() {
 // Replace the placeholder in the template (first occurrence) with server-side value
 emailTemplate = emailTemplate.replace('00:00:00', buildCountdownText());
 
-// Postmark configuration
-const POSTMARK_API_TOKEN = '37e3388d-e02d-4a57-83d6-0fc35554914d';
-const FROM_EMAIL = 'admin@fence-net.com';
-const TO_EMAIL = 'admin@fence-net.com';
+// Postmark configuration (from environment)
+const POSTMARK_API_TOKEN = (process.env.POSTMARK_API_TOKEN || '').trim();
+const FROM_EMAIL = (process.env.FROM_EMAIL || 'admin@fence-net.com').trim();
+const TO_EMAIL = (process.env.TO_EMAIL || 'admin@fence-net.com').trim();
 
 // Email data
 const emailData = {
@@ -52,13 +53,10 @@ const emailData = {
 
 console.log('Email template loaded successfully!');
 console.log('Template size:', emailTemplate.length, 'characters');
-console.log('\nTo send this email:');
-console.log('1. Sign up at https://postmarkapp.com/');
-console.log('2. Verify your sender domain/email');
-console.log('3. Get your API token from the API tab');
-console.log('4. Update the POSTMARK_API_TOKEN and FROM_EMAIL variables above');
-console.log('5. Run: npm install node-fetch');
-console.log('6. Run: node send-email.js');
+if (!POSTMARK_API_TOKEN) {
+  console.error('\nERROR: Missing POSTMARK_API_TOKEN. Set it in your environment or .env file.');
+  process.exit(1);
+}
 
 const fetch = require('node-fetch');
 
