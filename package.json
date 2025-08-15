@@ -1,0 +1,16 @@
+{
+  "name": "postmark-email-sender",
+  "version": "1.0.0",
+  "description": "Send email marketing template via Postmark",
+  "main": "send-email.js",
+  "scripts": {
+    "send": "node send-email.js",
+    "test": "node send-email.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "keywords": ["email", "postmark", "marketing"],
+  "author": "",
+  "license": "ISC"
+}
